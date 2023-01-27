@@ -5,6 +5,11 @@
   </header>
 
   <div class="panel panel-default items">
+  <% if cart.size == 0 %> 
+  <div class="alert alert-secondary" role="alert">
+  Your cart is empty. <%= link_to "Go add some lovely plants to your cart", "/products"%>
+</div>
+  <% else %>
     <table class="table table-bordered">
       <thead>
         <tr>
@@ -48,5 +53,7 @@
       <% end %>
     </div>
   </div>
+  <% end %>
+  
 
 </section>
