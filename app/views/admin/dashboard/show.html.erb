@@ -4,11 +4,11 @@
 
 <div class="stats">
 <div class="stats-products">
-<h3 class="stats-number"><%= @products.size %></h3>
+<h3 class="stats-number"><%= link_to @products.size, "/admin/products" %></h3>
 <p>total products</p>
 </div>
 <div class="stats-categories">
-<h3 class="stats-number"><%= @categories.size %></h3>
+<h3 class="stats-number"><%= link_to @categories.size, "/admin/products" %></h3>
 <p>total categories</p></div>
 </div>
 
