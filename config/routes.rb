@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'categories/index'
-    get 'categories/new'
-    get 'categories/create'
-  end
-  get 'about', to: "about#index"
+
   root to: 'products#index'
+  get 'about', to: "about#index"
+
+  # user authentication
+  get '/signup', to: "users#new"
+  post '/users', to: 'users#create'
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  get '/logout', to: 'sessions#destroy'
 
   resources :products, only: [:index, :show]
   resources :categories, only: [:show]
