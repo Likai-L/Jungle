@@ -6,4 +6,7 @@
     <% product_num = @products.select {|product| product["category_id"] == category.id}.length %>
     <%= product_num %>
   </td>
+    <td>
+    <%= link_to fa_icon('trash'), [:admin, category], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
+  </td>
 </tr>
