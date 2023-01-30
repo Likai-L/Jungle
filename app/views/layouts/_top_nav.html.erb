@@ -54,6 +54,7 @@
             aria-expanded="false"
           >
             Admin
+            
           </a>
           <ul class="dropdown-menu dropdown-menu-dark">
             <li><%= link_to 'Dashboard', [:admin, :root], class: "nav-link" %></li>
@@ -61,6 +62,23 @@
             <li><%= link_to 'Products', [:admin, :products], class: "nav-link" %></li>
           </ul>
         </li>
+            <% if current_user %>
+             <li class="nav-item">
+             <span class="nav-link">
+              <%= current_user.name %>
+              </span>
+              </li>
+              <li class="nav-item">
+              <%= link_to "Logout", '/logout', class: "nav-link" %>
+              </li>
+              <% else %>
+              <li class="nav-item">
+              <%= link_to "Login", '/login', class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+              <%= link_to "Sign up", '/signup', class: "nav-link" %>
+              </li>
+              <% end %>
         <li class="nav-item end-0">
           <%= link_to cart_path, class: "nav-link " do %> <%= fa_icon "shopping-cart" %>
           My Cart (<%= cart.size %>) <% end %>
