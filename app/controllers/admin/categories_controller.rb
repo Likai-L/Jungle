@@ -1,7 +1,7 @@
 class Admin::CategoriesController < ApplicationController
   def index
     @categories = Category.all
-    pp @categories
+    @products = Product.all
   end
 
   def new
