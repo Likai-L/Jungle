@@ -2,4 +2,8 @@
   <td>
     <%= category.name %>
   </td>
+    <td>
+    <% product_num = @products.select {|product| product["category_id"] == category.id}.length %>
+    <%= product_num %>
+  </td>
 </tr>
