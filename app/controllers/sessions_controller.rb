@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   def new; end
 
   def create
-    if (user = User.authenticate_with_credentials(params[:email], [:password]))
+    if (user = User.authenticate_with_credentials(params[:email], params[:password]))
       # save the user id inside the browser cookie
       session[:user_id] = user.id
       redirect_to '/'
