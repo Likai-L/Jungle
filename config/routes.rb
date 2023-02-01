@@ -1,17 +1,15 @@
 Rails.application.routes.draw do
-
-
   root to: 'products#index'
-  get 'about', to: "about#index"
+  get 'about', to: 'about#index'
 
   # user authentication
-  get '/signup', to: "users#new"
+  get '/signup', to: 'users#new'
   post '/users', to: 'users#create'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
 
-  resources :products, only: [:index, :show]
+  resources :products, only: %i[index show]
   resources :categories, only: [:show]
 
   resource :cart, only: [:show] do
@@ -19,12 +17,12 @@ Rails.application.routes.draw do
     post   :remove_item
   end
 
-  resources :orders, only: [:create, :show]
+  resources :orders, only: %i[create show]
 
   namespace :admin do
     root to: 'dashboard#show'
-    resources :products, except: [:edit, :update, :show]
-    resources :categories
+    resources :products, except: %i[edit update show]
+    resources :categories, only: %i[index new create destroy]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
