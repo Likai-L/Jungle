@@ -76,5 +76,13 @@ RSpec.describe User, type: :model do
       @expected = User.find_by_email('lana@lana.com')
       expect(@return_value).to eq(@expected)
     end
+
+    it 'returns the user when credentials are valid even if email is cased differently' do
+      @user = User.create(email: 'lana@lana.com', first_name: 'Lana', last_name: 'Del Rey', password: '123',
+                          password_confirmation: '123')
+      @return_value = User.authenticate_with_credentials(' lanA@laNa.cOm   ', '123')
+      @expected = User.find_by_email('lana@lana.com')
+      expect(@return_value).to eq(@expected)
+    end
   end
 end
