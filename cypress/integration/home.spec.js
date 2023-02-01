@@ -1,4 +1,6 @@
-describe('Home page', () => {
+describe("Home page", () => {
   beforeEach(() => {
-    cy.visit('/')
-  })
+    cy.visit("/");
+  });
+  it("visit home page without problem", () => {});
+});
